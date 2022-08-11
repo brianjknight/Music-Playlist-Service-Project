@@ -1,1 +1,81 @@
-PARTICIPANTS: use this file for creating the class diagram in mastery task 01
+@startuml
+class AddSongToPlaylistActivity {
+    -log : Logger
+    -playListDao : PlayListDao
+    -albumTrackDao : AlbumTrackDao
+    +handleRequest(addSongToPlaylistRequest : AddSongToPlaylistRequest) : AddSongToPlaylistResult
+}
+class CreatePlaylistActivity {
+    -log : Logger
+    -playListDao : PlayListDao
+    +handleRequest(createPlaylistRequest : CreatePlaylistRequest) : CreatePlaylistResult
+}
+class GetPlaylistActivity {
+    -log : Logger
+    -playListDao : PlayListDao
+    +handleRequest(getPlaylistRequest : GetPlaylistRequest) : GetPlaylistResult
+}
+class GetPlaylistSongsActivity {
+    -log : Logger
+    -playListDao : PlayListDao
+    +handleRequest(getPlaylistSongsRequest : GetPlaylistSongsRequest) : GetPlaylistSongsResult
+}
+class UpdatePlaylistActivity {
+    -log : Logger
+    -playListDao : PlayListDao
+    +handleRequest(updatePlaylistRequest : UpdatePlaylistRequest) : UpdatePlaylistResult
+}
+
+interface RequestHandler {
+}
+
+
+class AlbumTrackDao {
+    -dynamoDbMapper : DynamoDBMapper
+}
+
+class PlaylistDao {
+    -dynamoDbMapper : DynamoDBMapper
+    +getPlaylist(id : String) : Playlist
+}
+
+AddSongToPlaylistActivity o-- PlaylistDao
+AddSongToPlaylistActivity o--- AlbumTrackDao
+CreatePlaylistActivity o--- PlaylistDao
+GetPlaylistActivity o--- PlaylistDao
+GetPlaylistSongsActivity o--- PlaylistDao
+UpdatePlaylistActivity o-- PlaylistDao
+AddSongToPlaylistActivity ---|> RequestHandler
+CreatePlaylistActivity ---|> RequestHandler
+GetPlaylistActivity ---|> RequestHandler
+GetPlaylistSongsActivity ---|> RequestHandler
+UpdatePlaylistActivity ---|> RequestHandler
+
+newpage
+class AlbumTrack {
+    -@DynamoDBHashKey asin : String
+    -@DynamoDBRangeKey trackNumber : Integer
+    -albumName : String
+    -songTitle : String
+}
+
+class Playlist {
+    -@DynamoDBHashKey id : String
+    -name : String
+    -customerId : String
+    -songCount : Integer
+    -tags : Set<String>
+    -songList : List<AlbumTrack>
+    +getId() : String
+    +setId(id : String)
+    +getSongList() : List<AlbumTrack>
+    +setSongList(songList : List<AlbumTrack>)
+}
+class AlbumTrackNotFoundException {}
+class InvalidAttributeValueException {}
+class PlaylistNotFoundException {}
+
+Playlist o-- AlbumTrack
+Playlist -- AlbumTrack
+
+@enduml
