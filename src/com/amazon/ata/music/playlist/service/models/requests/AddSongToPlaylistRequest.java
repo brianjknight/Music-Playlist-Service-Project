@@ -8,9 +8,19 @@ public class AddSongToPlaylistRequest {
     private int trackNumber;
     private boolean queueNext;
 
+    /**
+     * No parameter constructor.
+     */
     public AddSongToPlaylistRequest() {
     }
 
+    /**
+     * Parameterized constructor.
+     * @param id playlist ID
+     * @param asin for specific song.
+     * @param trackNumber number location of song.
+     * @param queueNext
+     */
     public AddSongToPlaylistRequest(String id, String asin, int trackNumber, boolean queueNext) {
         this.id = id;
         this.asin = asin;
@@ -83,7 +93,9 @@ public class AddSongToPlaylistRequest {
                 '}';
     }
 
-    public static Builder builder() {return new Builder();}
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public static final class Builder {
         private String id;
@@ -91,8 +103,10 @@ public class AddSongToPlaylistRequest {
         private int trackNumber;
         private boolean queueNext;
 
+        /**
+         * No param constructor for builder.
+         */
         private Builder() {
-
         }
 
         public Builder withId(String idToUse) {

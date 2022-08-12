@@ -3,13 +3,8 @@ package com.amazon.ata.music.playlist.service.dynamodb;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.exceptions.PlaylistNotFoundException;
 
-import com.amazon.ata.music.playlist.service.models.PlaylistModel;
-import com.amazon.ata.music.playlist.service.models.results.CreatePlaylistResult;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import org.testng.collections.Sets;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Accesses data for a playlist using {@link Playlist} to represent the model in DynamoDB.

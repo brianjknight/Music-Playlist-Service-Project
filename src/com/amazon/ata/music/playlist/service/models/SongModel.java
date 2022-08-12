@@ -8,8 +8,10 @@ public class SongModel {
     private int trackNumber;
     private String title;
 
+    /**
+     * No param constructor.
+     */
     public SongModel() {
-
     }
 
     public SongModel(Builder builder) {
@@ -53,8 +55,12 @@ public class SongModel {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         SongModel songModel = (SongModel) o;
         return trackNumber == songModel.trackNumber &&
                 Objects.equals(asin, songModel.asin) &&
@@ -77,7 +83,9 @@ public class SongModel {
                 '}';
     }
 
-    public static Builder builder() { return new Builder(); }
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public static final class Builder {
         private String asin;
@@ -105,6 +113,8 @@ public class SongModel {
             return this;
         }
 
-        public SongModel build() {return new SongModel(this);}
+        public SongModel build() {
+            return new SongModel(this);
+        }
     }
 }

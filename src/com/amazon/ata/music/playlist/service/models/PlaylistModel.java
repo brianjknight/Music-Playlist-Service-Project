@@ -10,10 +10,16 @@ public class PlaylistModel {
     private int songCount;
     private List<String> tags;
 
+    /**
+     * No parameter constructor.
+     */
     public PlaylistModel() {
-
     }
 
+    /**
+     * Constructor to create with builder object.
+     * @param builder builder object.
+     */
     public PlaylistModel(Builder builder) {
         this.id = builder.id;
         this.name = builder.name;
@@ -64,8 +70,12 @@ public class PlaylistModel {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PlaylistModel that = (PlaylistModel) o;
         return songCount == that.songCount &&
                 Objects.equals(id, that.id) &&
@@ -90,7 +100,9 @@ public class PlaylistModel {
                 '}';
     }
 
-    public static Builder builder() { return new Builder(); }
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public static final class Builder {
         private String id;
@@ -124,6 +136,8 @@ public class PlaylistModel {
             return this;
         }
 
-        public PlaylistModel build() {return new PlaylistModel(this);}
+        public PlaylistModel build() {
+            return new PlaylistModel(this);
+        }
     }
 }

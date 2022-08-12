@@ -3,6 +3,7 @@ package com.amazon.ata.music.playlist.service.lambda;
 import com.amazon.ata.music.playlist.service.dependency.App;
 import com.amazon.ata.music.playlist.service.models.requests.CreatePlaylistRequest;
 import com.amazon.ata.music.playlist.service.models.results.CreatePlaylistResult;
+
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
@@ -10,6 +11,9 @@ public class CreatePlaylistActivityProvider implements RequestHandler<CreatePlay
 
     private static App app;
 
+    /**
+     * No parameter constructor.
+     */
     public CreatePlaylistActivityProvider() {
 
     }

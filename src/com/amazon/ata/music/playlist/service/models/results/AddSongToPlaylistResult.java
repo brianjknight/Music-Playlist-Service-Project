@@ -29,6 +29,8 @@ public class AddSongToPlaylistResult {
             return this;
         }
 
-        public AddSongToPlaylistResult build() {return new AddSongToPlaylistResult(this);}
+        public AddSongToPlaylistResult build() {
+            return new AddSongToPlaylistResult(this);
+        }
     }
 }

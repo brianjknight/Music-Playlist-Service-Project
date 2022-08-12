@@ -1,10 +1,10 @@
 package com.amazon.ata.music.playlist.service.activity;
 
-import com.amazon.ata.music.playlist.service.models.requests.AddSongToPlaylistRequest;
-import com.amazon.ata.music.playlist.service.models.results.AddSongToPlaylistResult;
-import com.amazon.ata.music.playlist.service.models.SongModel;
 import com.amazon.ata.music.playlist.service.dynamodb.AlbumTrackDao;
 import com.amazon.ata.music.playlist.service.dynamodb.PlaylistDao;
+import com.amazon.ata.music.playlist.service.models.SongModel;
+import com.amazon.ata.music.playlist.service.models.requests.AddSongToPlaylistRequest;
+import com.amazon.ata.music.playlist.service.models.results.AddSongToPlaylistResult;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
@@ -50,7 +50,8 @@ public class AddSongToPlaylistActivity implements RequestHandler<AddSongToPlayli
      *                                 API defined {@link SongModel}s
      */
     @Override
-    public AddSongToPlaylistResult handleRequest(final AddSongToPlaylistRequest addSongToPlaylistRequest, Context context) {
+    public AddSongToPlaylistResult handleRequest(
+            final AddSongToPlaylistRequest addSongToPlaylistRequest, Context context) {
         log.info("Received AddSongToPlaylistRequest {} ", addSongToPlaylistRequest);
 
         return AddSongToPlaylistResult.builder()

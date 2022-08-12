@@ -1,9 +1,8 @@
 package com.amazon.ata.music.playlist.service.converters;
 
-import com.amazon.ata.music.playlist.service.models.PlaylistModel;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
+import com.amazon.ata.music.playlist.service.models.PlaylistModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModelConverter {

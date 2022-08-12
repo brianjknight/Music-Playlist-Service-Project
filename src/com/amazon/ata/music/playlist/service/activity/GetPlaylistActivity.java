@@ -1,11 +1,11 @@
 package com.amazon.ata.music.playlist.service.activity;
 
-import com.amazon.ata.music.playlist.service.models.requests.GetPlaylistRequest;
-import com.amazon.ata.music.playlist.service.models.results.GetPlaylistResult;
-import com.amazon.ata.music.playlist.service.models.PlaylistModel;
 import com.amazon.ata.music.playlist.service.converters.ModelConverter;
 import com.amazon.ata.music.playlist.service.dynamodb.PlaylistDao;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
+import com.amazon.ata.music.playlist.service.models.PlaylistModel;
+import com.amazon.ata.music.playlist.service.models.requests.GetPlaylistRequest;
+import com.amazon.ata.music.playlist.service.models.results.GetPlaylistResult;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;

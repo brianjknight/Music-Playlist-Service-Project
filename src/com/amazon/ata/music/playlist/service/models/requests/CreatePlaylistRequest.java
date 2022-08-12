@@ -8,12 +8,21 @@ public class CreatePlaylistRequest {
     private String customerId;
     private List<String> tags;
 
+    /**
+     * Parameterized constructor.
+     * @param name playlist name.
+     * @param customerId the customer's ID.
+     * @param tags List of associated tags.
+     */
     public CreatePlaylistRequest(String name, String customerId, List<String> tags) {
         this.name = name;
         this.customerId = customerId;
         this.tags = tags;
     }
 
+    /**
+     * No parameter constructor.
+     */
     public CreatePlaylistRequest() {
     }
 
