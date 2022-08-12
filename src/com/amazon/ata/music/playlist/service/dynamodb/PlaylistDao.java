@@ -3,7 +3,10 @@ package com.amazon.ata.music.playlist.service.dynamodb;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.exceptions.PlaylistNotFoundException;
 
+import com.amazon.ata.music.playlist.service.models.PlaylistModel;
+import com.amazon.ata.music.playlist.service.models.results.CreatePlaylistResult;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import org.testng.collections.Sets;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +43,11 @@ public class PlaylistDao {
     }
 
     /**
-     * Creates and saves a new empty Playlist with a unique ID and the provided Customer ID, Playlist name, and tags(optional).
-     * @param name the name of the playlist.
-     * @param customerId the customer ID.
+     * Saves a new empty Playlist with a unique ID and the provided Customer ID, Playlist name, and tags(optional).
+     * @param playlist created in CreatePlaylistActivity handleRequest() method
      */
-    public void savePlaylist(String name, String customerId) {
+    public void savePlaylist(Playlist playlist) {
 
+        dynamoDbMapper.save(playlist);
     }
 }

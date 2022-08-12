@@ -37,6 +37,7 @@ class AlbumTrackDao {
 class PlaylistDao {
     -dynamoDbMapper : DynamoDBMapper
     +getPlaylist(id : String) : Playlist
+    +savePlayList(playlist : Playlist)
 }
 
 AddSongToPlaylistActivity o-- PlaylistDao

@@ -14,7 +14,7 @@ public class ModelConverter {
      */
     public PlaylistModel toPlaylistModel(Playlist playlist) {
         List<String> tagsList;
-        if (playlist.getTags().size() == 0) {
+        if (playlist.getTags().size() == 0 || playlist.getTags() == null) {
             tagsList = null;
         } else {
             tagsList = List.copyOf(playlist.getTags());
