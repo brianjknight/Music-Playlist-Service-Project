@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CreatePlaylistActivityTest {
     private CreatePlaylistActivity createPlaylistActivity;
-    private CreatePlaylistRequest createPlaylistRequest;
 
     @Mock
     private PlaylistDao playlistDao;

@@ -3,6 +3,7 @@ package com.amazon.ata.music.playlist.service.converters;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.models.PlaylistModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModelConverter {
@@ -12,11 +13,10 @@ public class ModelConverter {
      * @return the converted playlist
      */
     public PlaylistModel toPlaylistModel(Playlist playlist) {
-        List<String> tagsList;
-        if (playlist.getTags().size() == 0 || playlist.getTags() == null) {
-            tagsList = null;
-        } else {
-            tagsList = List.copyOf(playlist.getTags());
+        List<String> tagsList = null;
+
+        if (playlist.getTags() != null && playlist.getTags().size() != 0) {
+            tagsList = new ArrayList<>(playlist.getTags());
         }
 
         return PlaylistModel.builder()

@@ -40,7 +40,7 @@ public class Playlist {
         this.name = name;
     }
 
-    @DynamoDBAttribute(attributeName = "customer_Id")
+    @DynamoDBAttribute(attributeName = "customerId")
     public String getCustomerId() {
         return customerId;
     }
@@ -49,7 +49,7 @@ public class Playlist {
         this.customerId = customerId;
     }
 
-    @DynamoDBAttribute(attributeName = "song_count")
+    @DynamoDBAttribute(attributeName = "songCount")
     public Integer getSongCount() {
         return songCount;
     }

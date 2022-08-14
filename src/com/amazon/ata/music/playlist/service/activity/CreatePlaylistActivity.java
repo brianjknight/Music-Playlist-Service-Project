@@ -15,6 +15,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.collections.Sets;
 
+import java.util.Set;
+
 /**
  * Implementation of the CreatePlaylistActivity for the MusicPlaylistService's CreatePlaylist API.
  *
@@ -63,7 +65,11 @@ public class CreatePlaylistActivity implements RequestHandler<CreatePlaylistRequ
         playlist.setName(createPlaylistRequest.getName());
         playlist.setCustomerId(createPlaylistRequest.getCustomerId());
         playlist.setSongCount(0);
-        playlist.setTags(Sets.newHashSet(createPlaylistRequest.getTags()));
+        if (createPlaylistRequest.getTags() != null && createPlaylistRequest.getTags().size() > 0) {
+            playlist.setTags(Sets.newHashSet(createPlaylistRequest.getTags()));
+        } else {
+            playlist.setTags(null);
+        }
         playlist.setSongList(null);
 
         playlistDao.savePlaylist(playlist);
