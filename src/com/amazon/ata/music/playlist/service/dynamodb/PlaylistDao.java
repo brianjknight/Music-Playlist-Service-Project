@@ -41,8 +41,9 @@ public class PlaylistDao {
      * Saves a new empty Playlist with a unique ID and the provided Customer ID, Playlist name, and tags(optional).
      * @param playlist created in CreatePlaylistActivity handleRequest() method
      */
-    public void savePlaylist(Playlist playlist) {
+    public Playlist savePlaylist(Playlist playlist) {
 
         dynamoDbMapper.save(playlist);
+        return playlist;
     }
 }

@@ -73,10 +73,14 @@ class Playlist {
     +setSongList(songList : List<AlbumTrack>)
 }
 class AlbumTrackNotFoundException {}
-class InvalidAttributeValueException {}
 class PlaylistNotFoundException {}
+class InvalidAttributeException {}
+class InvalidAttributeValueException {}
+class InvalidAttributeChangeException {}
 
 Playlist o-- AlbumTrack
 Playlist -- AlbumTrack
+InvalidAttributeException <|-- InvalidAttributeValueException
+InvalidAttributeException <|-- InvalidAttributeChangeException
 
 @enduml
