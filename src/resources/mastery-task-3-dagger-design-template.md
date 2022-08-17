@@ -34,23 +34,37 @@ Remember that:
 List the class(es) that `App.java` provides that are **not** dependencies of other classes, that is, no other classes
  in the project depend on these classes
 
-* 
+* AddSongToPlaylistActivity
+* CreatePlaylistActivity
+* GetPlaylistActivity
+* GetPlaylistSongsActivity
+* UpdatePlaylistActivity
+* DynamoDBMapper
 
 List the class(es) that `App.java` provides that **are** dependencies of other classes
 
-* 
+* PlaylistDao
+* AlbumTrackDao
 
 List the class(es) that `App.java` creates that have constructors we must annotate with `@Inject`
 
-* 
+* AddSongToPlaylistActivity
+* CreatePlaylistActivity
+* GetPlaylistActivity
+* GetPlaylistSongsActivity
+* UpdatePlaylistActivity
+* PlaylistDao
+* AlbumTrackDao
 
 List the class(es) that `App.java` creates that we must provide in a Dagger module
 
-* 
+* DynamoDBMapper
 
 List the class(es) that `App.java` creates as Singletons.
 
-* 
+* DynamoDBMapper
+* PlaylistDao
+* AlbumTrackDao
 
 ### Pseudocode Dagger classes
 
@@ -60,28 +74,32 @@ your module, `DaoModule`, as indicated below. Use these names in
 your implementation as well)
 
 ```
-@______
-@______(______ = {______.class})
+@Singleton
+@Component(modules = {DaoModule.class})
 public interface ServiceComponent {
-    ______ provide______();
+    CreatePlaylistActivity provideCreatePlaylistActivity();
 
-    ______ provide______();
+    GetPlaylistActivity provideGetPlaylistActivity();
 
-    ______ provide______();
+    UpdatePlaylistActivity provideUpdatePlaylistActivity();
 
-    ______ provide______();
+    AddSongToPlaylistActivity provideAddSongToPlaylistActivity();
 
-    ______ provide______();
+    GetPlaylistSongsActivity provideGetPlaylistSongsActivity();
+    
+    PlaylistDao providePlaylistDao();
+    
+    AlbumTrackDao provideAlbumTrackDao();
 }
 ```
 
 ```
-@______
+@Module
 public class DaoModule {
 
-    @______
-    @______
-    public ______ provide______() {
+    @Singleton
+    @Provides
+    public DynamoDBMapper provideDynamoDBMapper() {
         // Implementation in milestone 2
     }
 }
