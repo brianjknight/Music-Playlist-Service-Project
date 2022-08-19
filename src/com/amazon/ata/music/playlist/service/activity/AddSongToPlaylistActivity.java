@@ -67,12 +67,18 @@ public class AddSongToPlaylistActivity implements RequestHandler<AddSongToPlayli
         AlbumTrack requestedAlbumTrack = albumTrackDao.getAlbumTrack(requestedAsin, requestedTrackNumber);
 
         Playlist playlist = playlistDao.getPlaylist(addSongToPlaylistRequest.getId());
-        List<AlbumTrack> songList = playlist.getSongList();
+        LinkedList<AlbumTrack> songList;
 
-        if (!addSongToPlaylistRequest.isQueueNext()) {
-            songList.add(requestedAlbumTrack);
+        if(playlist.getSongList() != null) {
+            songList = (LinkedList<AlbumTrack>) playlist.getSongList();
         } else {
-            songList.add(0, requestedAlbumTrack);
+            songList = new LinkedList<AlbumTrack>();
+        }
+
+        if (addSongToPlaylistRequest.isQueueNext()) {
+            songList.addFirst(requestedAlbumTrack);
+        } else {
+            songList.addLast(requestedAlbumTrack);
         }
         playlist.setSongList(songList);
         playlistDao.savePlaylist(playlist);
