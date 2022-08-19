@@ -1,7 +1,9 @@
 package com.amazon.ata.music.playlist.service.converters;
 
+import com.amazon.ata.music.playlist.service.dynamodb.models.AlbumTrack;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.models.PlaylistModel;
+import com.amazon.ata.music.playlist.service.models.SongModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -62,6 +64,24 @@ public class ModelConverterTest {
         assertNull(pinkFloydPlaylistModel.getTags(), "Expected the attribute List<String> tags to be null");
     }
 
+    @Test
+    public void toSongModel_givenAlbumTrack_returnsSongModelWithSameAttributes() {
+        //GIVEN
+        AlbumTrack albumTrack = new AlbumTrack();
+        albumTrack.setAsin("B019HKJTCI");
+        albumTrack.setTrackNumber(6);
+        albumTrack.setAlbumName("Dark Side of the Moon");
+        albumTrack.setSongTitle("Money");
 
+        //WHEN
+        SongModel songModel = modelConverter.toSongModel(albumTrack);
+
+        //THEN
+        assertTrue(albumTrack.getAsin().equals(songModel.getAsin()), "Expected asins to be the same.");
+        assertTrue(albumTrack.getAlbumName().equals(songModel.getAlbum()), "Expected Album Names to be the same.");
+        assertTrue(albumTrack.getSongTitle().equals(songModel.getTitle()), "Expected song titles to be the same.");
+        assertTrue(albumTrack.getTrackNumber().equals(songModel.getTrackNumber()), "Expected track numbers to be the same.");
+
+    }
 
 }

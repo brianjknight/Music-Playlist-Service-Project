@@ -33,4 +33,5 @@ public class AddSongToPlaylistResult {
             return new AddSongToPlaylistResult(this);
         }
     }
+
 }
