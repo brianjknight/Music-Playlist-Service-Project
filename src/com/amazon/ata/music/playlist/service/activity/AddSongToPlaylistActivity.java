@@ -81,6 +81,11 @@ public class AddSongToPlaylistActivity implements RequestHandler<AddSongToPlayli
             songList.addLast(requestedAlbumTrack);
         }
         playlist.setSongList(songList);
+
+        Integer songCount = playlist.getSongCount();
+        songCount++;
+        playlist.setSongCount(songCount);
+
         playlistDao.savePlaylist(playlist);
 
         List<SongModel> songModelList = new ModelConverter().toSongModelList(songList);
