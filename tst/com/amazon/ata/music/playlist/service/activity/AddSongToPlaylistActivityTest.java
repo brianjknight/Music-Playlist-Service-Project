@@ -57,7 +57,6 @@ public class AddSongToPlaylistActivityTest {
             .withAsin(addedAsin)
             .withTrackNumber(addedTracknumber)
             .build();
-            System.out.println("GIVEN AddSongToPlaylistRequest request = " + request);
 
         // WHEN
         AddSongToPlaylistResult result = addSongToPlaylistActivity.handleRequest(request, null);
