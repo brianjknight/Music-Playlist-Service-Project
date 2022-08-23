@@ -64,6 +64,7 @@ public class GetPlaylistSongsActivity implements RequestHandler<GetPlaylistSongs
             songModelList = new ModelConverter().toSongModelList(songList);
         }
 
+        //If any other SongOrder is provided or is omitted, the song list is kept in its existing order.
         if (SongOrder.REVERSED == songOrder) {
             Collections.reverse(songModelList);
         }
