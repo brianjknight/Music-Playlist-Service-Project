@@ -19,10 +19,10 @@ public class MyApp {
         Playlist myPlaylistOne = playlistDao.getPlaylist("rEDoR");
         System.out.println(myPlaylistOne);
 
-        List<String> myStrings = new ArrayList<>();
-        myStrings.add("One");
-        myStrings.add("Two");
-        myStrings.add("Three");
+//        List<String> myStrings = new ArrayList<>();
+//        myStrings.add("One");
+//        myStrings.add("Two");
+//        myStrings.add("Three");
 
 //        List<String> otherlist = new ArrayList<>();
 
